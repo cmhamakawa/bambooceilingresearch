@@ -21,16 +21,16 @@ This shows how all the files generally work together.
 
 
 ### The Models (Scarcity and No Scarcity Directories)
-1. **`BambooCeilingModelFunctions.py` **: Each directory contains the same files. The difference in how the models are coded lies in the `BambooCeilingModelFunctions.py` file. This contains multiple functions in which the foundational details of the model are created.
+1. **`BambooCeilingModelFunctions.py`**: Each directory contains the same files. The difference in how the models are coded lies in the `BambooCeilingModelFunctions.py` file. This contains multiple functions in which the foundational details of the model are created.
 
 2. **`BambooCeilingModelSimulation.py`**: This model runs one formal simulation of the model with given inputs. It uses the `BambooCeilingModelFunctions.py` file and brings all the different functions together to run the model.
 
 3. **`BambooCeilingModelSimulationSet.py`**: Runs 50 simulations given a set of parameters.
 
-4. `**run_model.py`**: takes the inputted file ( `parameters.xlsx`) and uses the values in these files to run 50 simulations (using `BambooCeilingModelSimulationSet.py`)  of every single desired combination from the `parameters.xlsx` file.
+4. **`run_model.py`**: takes the inputted file ( `parameters.xlsx`) and uses the values in these files to run 50 simulations (using `BambooCeilingModelSimulationSet.py`)  of every single desired combination from the `parameters.xlsx` file.
 
 ### Analyzing Results
-`Analyzing Simulation Results`: Uses results from the (indicated) model and `parameters.xlsx`. If one changes the sheet names in `parameters.xlsx` incorrectly, this file would be impacted. This file reads, analyzes, graphs and stores the graphed results in `model_analysis` directory. The graphs that are used in the paper are located in the `model_analysis/graphs` directory. The other directory `t-comparison` is now irrelevant. To make your own visualization:
+**`Analyzing Simulation Results`**: Uses results from the (indicated) model and `parameters.xlsx`. If one changes the sheet names in `parameters.xlsx` incorrectly, this file would be impacted. This file reads, analyzes, graphs and stores the graphed results in `model_analysis` directory. The graphs that are used in the paper are located in the `model_analysis/graphs` directory. The other directory `t-comparison` is now irrelevant. To make your own visualization:
 1. Choose model (`model_input`)
 2. Run all cells in Section 1
 3. Change inputs as desired (Section 2) to generate desired visualization
