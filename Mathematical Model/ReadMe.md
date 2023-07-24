@@ -29,7 +29,7 @@ This shows how all the files generally work together.
 
 4. **`run_model.py`**: takes the inputted file ( `parameters.xlsx`) and uses the values in these files to run 50 simulations (using `BambooCeilingModelSimulationSet.py`)  of every single desired combination from the `parameters.xlsx` file. 
 #### To run your own parameter values
-1. ** `parameters.xlsx`**: To run your own parameter values, change the `parameters.xlsx` sheet accordingly. (Read **`parameters.md`** first).
+1. **`parameters.xlsx`**: To run your own parameter values, change the `parameters.xlsx` sheet accordingly. (Read **`parameters.md`** first).
 2. **`run_model.py`**: To run parameters from a specific sheet of `parameters.xlsx` , open `run_model.py` set `run_all` in this file to `false` and change `input_sheet_name_indices` to the index (or indices) of the desired sheet(s), which starts at 0.
 
 ### Analyzing Results
