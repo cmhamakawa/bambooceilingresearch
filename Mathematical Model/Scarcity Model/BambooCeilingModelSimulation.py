@@ -5,7 +5,7 @@ import BambooCeilingModelFunctions as functions
 import itertools
 import pandas as pd
 # add sd
-# parameter for this function would be n_trials, total_n, percent_Asian, Asian_a, Non_Asian_a, Beta
+# parameter for this function would be n_trials, total_n, percent_g1, g1_a, g2_a, Beta
 # make this a funtion, return a list with 
 # L0 percentage, C1 percentage, L1 percentage,....etc
 # in other file, have column name contain parameter information
@@ -14,9 +14,9 @@ import pandas as pd
 
 
 
-def bamboo_ceiling_simulation(asian_percentage,
-                              asian_assertiveness,
-                              nonAsian_assertiveness,
+def bamboo_ceiling_simulation(g1_percentage,
+                              g1_assertiveness,
+                              g2_assertiveness,
                               Beta,
                               sd,
                               num_start,
@@ -36,7 +36,7 @@ def bamboo_ceiling_simulation(asian_percentage,
     
     
     all_levels = functions.allgroups(2*num_levels, num_start)
-    initial_group = functions.create_group(asian_percentage, num_start, asian_assertiveness, nonAsian_assertiveness, 0, sd = (.1, .1))
+    initial_group = functions.create_group(g1_percentage, num_start, g1_assertiveness, g2_assertiveness, 0, sd = (.1, .1))
     starting_index = num_start
     
     for g in range(len(group_parameters)):
@@ -44,7 +44,7 @@ def bamboo_ceiling_simulation(asian_percentage,
         n = group_parameters[g][1]
         percentage = group_parameters[g][2]
         num_asian = int(percentage*n)
-        new_group = functions.create_group(percentage, n, asian_assertiveness, nonAsian_assertiveness, starting_index, (.1, .1), False)
+        new_group = functions.create_group(percentage, n, g1_assertiveness, g2_assertiveness, starting_index, (.1, .1), False)
         initial_group.update(new_group)
         (all_levels[level][0]).extend([i for i in range(starting_index, starting_index+n)])
         starting_index+=n
@@ -56,7 +56,7 @@ def bamboo_ceiling_simulation(asian_percentage,
         end_count = [0]*(2*num_levels+1)
         num_promoted = 0 # temp value - helps us set up for recursion
         if j > 1:
-            new_group = functions.create_group(asian_percentage, num_incoming, asian_assertiveness, nonAsian_assertiveness, starting_index, sd)
+            new_group = functions.create_group(g1_percentage, num_incoming, g1_assertiveness, g2_assertiveness, starting_index, sd)
             initial_group.update(new_group)
             (all_levels[0][0]).extend([i for i in range(starting_index, starting_index+num_incoming)]) # add individuals to lowest level group (initial group)
             starting_index +=num_incoming # denotes index to start numbering incoming individuals at

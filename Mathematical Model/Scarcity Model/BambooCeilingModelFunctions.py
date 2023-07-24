@@ -12,27 +12,27 @@ import math
 # The individual's information in a group can be accessed by indexing the employees/og group.
 
 # creates initial group of employees
-# asian_percentage:  percentage of Asians in initial group
+# g1_percentage:  percentage of group 1 in initial group
 # total_num:  total num of employees
-# a0:  [tuple] internal assertiveness [0], perceived assertiveness of Asians [1]
-# a1:  [tuple] internal assertiveness [0], perceived assertiveness of Non-Asians [1]
-# i is the number to start hte key at
+# a0:  [tuple] internal assertiveness [0], perceived assertiveness of group 1 [1]
+# a1:  [tuple] internal assertiveness [0], perceived assertiveness of group 2 [1]
+# i is the number to start the key at
 # j is the starting index
-# sd is standard deviation:  sd[0] is standard deviation for Asians, sd[1] is for nonasians
+# sd is standard deviation:  sd[0] is standard deviation for group 1, sd[1] is for group 2
 
-def create_group(asian_percentage, total_num, a0, a1, j, sd = (.1, .1), start_at_0 = True):
+def create_group(g1_percentage, total_num, a0, a1, j, sd = (.1, .1), start_at_0 = True):
     employees = {}
-    num_asians = asian_percentage * total_num # Number of Asians in this group
-    num_asians = int(num_asians)
+    num_g1 = g1_percentage * total_num # Number of group 1 individuals in this group
+    num_g1 = int(num_g1)
     initial_start = True
     time_pos = 0
     for i in range(j,j + total_num):
-        if i < (j+num_asians):
-            group = 0 # 0 indicates Asian
+        if i < (j+num_g1):
+            group = 0 # 0 indicates group 1
             a = random.normalvariate(a0[0], sd[0]) # assertiveness
             alpha = random.normalvariate(a0[1], sd[0]) # perceived assertivness
         else:
-            group = 1 # 1 indicates Non-Asian
+            group = 1 # 1 indicates group 2
             a = random.normalvariate(a1[0], sd[1]) # assertiveness
             alpha = random.normalvariate(a1[1], sd[1]) # perceived assertiveness
         # updates dictionary with new individual
@@ -142,14 +142,13 @@ def update_next_group(prev_g, og_g, a_alpha, next_g, lastLevIndex, beta = 1, num
         next_g[1] = []
     return new_num_left
         
-# counts number of Asians in the group and Non Asians
-# returns list [number of Asians, number of Non Asians]
+# counts number of group 1 individuals in the group and group 2 individuals
+# returns list [number of group 1, number of group 2]
 def percenta(curr_group, og_group):
     groups = [og_group[i][0] for i in curr_group[0]]
-    asians = groups.count(0)
-   #non-asians = groups.count(1) # non_asians
+    group1 = groups.count(0)
     if len(curr_group[0]) != 0:
-        return asians / len(curr_group[0])
+        return group1 / len(curr_group[0])
     return 0
 
 # even numbers c's, odd numbers l's
