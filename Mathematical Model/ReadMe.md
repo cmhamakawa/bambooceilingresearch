@@ -10,7 +10,7 @@ The paper contains a more detailed explanation on the model works. Note that thi
 
 ## Diagram
 This shows how all the files generally work together.
-![DirectoryDiagram](ModelDiagram.jpg)
+![DirectoryDiagram](ModelDiagram.png)
 
 ### The Inputs
 
