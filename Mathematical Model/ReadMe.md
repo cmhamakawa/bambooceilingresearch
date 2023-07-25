@@ -4,7 +4,8 @@
 We see two directories which contains the code of two overarching versions of our model.
 1. **No Scarcity Model** - This model does not have a limit to the number of people who are promoted.
 2. **Scarcity Model** - This model does have a limit to the number of people who can be promoted.
-The paper contains a more detailed explanation on the model works. Note that this simulation has an aspect of randomness.
+
+The paper contains a more detailed explanation on the models work. Note that this simulation has an aspect of randomness.
 
 ## About Files
 
@@ -15,9 +16,9 @@ This shows how all the files generally work together.
 ### The Inputs
 
 **`parameters.xlsx`**:  Note that this file is used in both `run_model.py` and `Analyze Simulation Results.ipynb`. Changing the names or this file name will affect both.
-1. The **sheet** (or tab) names represent the impact of a desired parameter ($a$,  $\alpha$, $\beta$ or both $a$ and $\alpha$) and the effect of other preset parameters). They should not be changed. If changed, must follow naming conventions. More details are in `parameters_info.md`.
+1. The **sheet** (or tab) names represent the impact of a desired parameter ($a$,  $\alpha$, $\beta$ or both $a$ and $\alpha$) and the effect of other preset parameters). They should not be changed. If changed, must follow naming conventions. More details are in `ParametersInfo.md`.
 2. Each **row** in a sheet represents a certain combination of parameters. The parameter value that is being investigated in that sheet is varied in value in each row. This combination/set of parameters is run 50 different times.
-    More details are in `parameters_info.md` which details how one can change the parameter values.
+    More details are in `ParametersInfo.md` which details how one can change the parameter values.
 
 
 ### The Models (Scarcity and No Scarcity Directories)
@@ -29,7 +30,7 @@ This shows how all the files generally work together.
 
 4. **`run_model.py`**: takes the inputted file ( `parameters.xlsx`) and uses the values in these files to run 50 simulations (using `BambooCeilingModelSimulationSet.py`)  of every single desired combination from the `parameters.xlsx` file. 
 #### To run your own parameter values
-1. **`parameters.xlsx`**: To run your own parameter values, change the `parameters.xlsx` sheet accordingly. (Read **`parameters.md`** first).
+1. **`parameters.xlsx`**: To run your own parameter values, change the `parameters.xlsx` sheet accordingly. (Read **`ParametersInfo.md`** first).
 2. **`run_model.py`**: To run parameters from a specific sheet of `parameters.xlsx` , open `run_model.py` set `run_all` in this file to `false` and change `input_sheet_name_indices` to the index (or indices) of the desired sheet(s), which starts at 0.
 
 ### Analyzing Results
