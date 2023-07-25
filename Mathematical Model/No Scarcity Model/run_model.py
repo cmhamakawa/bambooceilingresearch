@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Apr 14 09:48:36 2022
-
-@author: christinehamakawa
-"""
 
 import pandas as pd
 import ast
@@ -17,23 +12,38 @@ import shutil
 # reading dataframe with rows containing parameters
 # INPUTS: SHEET NAME INDEX
 run_all = False
-parameter_title = 'parameters_w_50'
+input_sheet_name_indices = [0, 1]
 
+
+# file and directory names
+parameter_title = 'parameters'
+simulation_results_folder = 'simulation_results'
 parameter_sheet_title = parameter_title + '.xlsx'
+
+# READING PARAMETERS
+# storing directories to read files
+og_dir = os.getcwd()
+print(og_dir)
+# change into parent directory (where parameters.xlsx file is)
+os.chdir("..")
 xls = pd.ExcelFile(parameter_sheet_title)
 sheet_names = xls.sheet_names
+# return to original directory
+os.chdir(og_dir)
+print("Read parameter input sucessfully")
+
 
 if run_all is True:
     sheet_name_indices = list(range(len(sheet_names)))
 else:
-    sheet_name_indices = [0, 1, 2, 3, 4]
+    sheet_name_indices = input_sheet_name_indices
     
     
-if os.path.isdir(parameter_title):
-     os.chdir(parameter_title)
+if os.path.isdir(simulation_results_folder):
+     os.chdir(simulation_results_folder)
 else:
-     os.makedirs(parameter_title)
-     os.chdir(parameter_title)
+     os.makedirs(simulation_results_folder)
+     os.chdir( simulation_results_folder)
 og_directory = os.getcwd()
 print(og_directory)
 
@@ -73,3 +83,4 @@ for sheet_name_index in sheet_name_indices:
     os.chdir(og_directory)
     print(curr_sheet_name)
     print("Reading one sheet DONE")
+    

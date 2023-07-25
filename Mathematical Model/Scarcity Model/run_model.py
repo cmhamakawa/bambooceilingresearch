@@ -11,24 +11,39 @@ import shutil
 
 # reading dataframe with rows containing parameters
 # INPUTS: SHEET NAME INDEX
-run_all = Falsen 
-parameter_title = 'parameters_w_50'
+run_all = False
+input_sheet_name_indices = [0, 1, 2, 3, 4]
 
+
+# file and directory names
+parameter_title = 'parameters'
+simulation_results_folder = 'simulation_results'
 parameter_sheet_title = parameter_title + '.xlsx'
+
+# READING PARAMETERS
+# storing directories to read files
+og_dir = os.getcwd()
+print(og_dir)
+# change into parent directory (where parameters.xlsx file is)
+os.chdir("..")
 xls = pd.ExcelFile(parameter_sheet_title)
 sheet_names = xls.sheet_names
+# return to original directory
+os.chdir(og_dir)
+print("Read parameter input sucessfully")
+
 
 if run_all is True:
     sheet_name_indices = list(range(len(sheet_names)))
 else:
-    sheet_name_indices = [0, 1, 2, 3, 4]
+    sheet_name_indices = input_sheet_name_indices
     
     
-if os.path.isdir(parameter_title):
-     os.chdir(parameter_title)
+if os.path.isdir(simulation_results_folder):
+     os.chdir(simulation_results_folder)
 else:
-     os.makedirs(parameter_title)
-     os.chdir(parameter_title)
+     os.makedirs(simulation_results_folder)
+     os.chdir( simulation_results_folder)
 og_directory = os.getcwd()
 print(og_directory)
 
